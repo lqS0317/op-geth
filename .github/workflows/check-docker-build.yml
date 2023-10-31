@@ -26,14 +26,12 @@ jobs:
           echo $UPDATEFILE_DIR
           for i in ${UPDATEFILE_DIR}
           do
-            echo $i
-            echo $i |grep Dockerfile
-            if [[ $? == 0 ]]
+            if [[ $i == *"Dockerfile" ]]
             then
                echo "if"
                image=$(echo $i | tr '[:upper:]' '[:lower:]')
                cmd="docker build -f $i -t $image:v1 ."
-               echo $cmd;$cmd
+               echo $cmd
             else
                echo "no dockerfile to build"
             fi
