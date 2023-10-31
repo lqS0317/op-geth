@@ -31,7 +31,8 @@ jobs:
                echo "if"
                image=$(echo $i | tr '[:upper:]' '[:lower:]')
                cmd="docker build -f $i -t $image:v1 ."
-               echo $cmd
+               echo -e "\e[32m$cmd\e[0m"
+               $cmd
             else
                echo "no dockerfile to build"
             fi
